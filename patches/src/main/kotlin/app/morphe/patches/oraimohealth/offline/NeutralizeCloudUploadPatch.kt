@@ -10,7 +10,7 @@ import app.morphe.patches.oraimohealth.shared.COMPATIBILITY_ORAIMO_HEALTH
 @Suppress("unused")
 val neutralizeCloudUploadPatch = bytecodePatch(
     name = "Neutralize Cloud Telemetry & Uploads",
-    description = "Stubs out background data upload service and forces network utility to offline state to prevent cloud metric collection.",
+    description = "Stubs out background data upload service to prevent cloud metric collection.",
     default = true
 ) {
     compatibleWith(COMPATIBILITY_ORAIMO_HEALTH)
@@ -27,14 +27,6 @@ val neutralizeCloudUploadPatch = bytecodePatch(
             0,
             """
                 return-void
-            """
-        )
-
-        NetworkUtilIsConnectedFingerprint.method.addInstructions(
-            0,
-            """
-                const/4 v0, 0x0
-                return v0
             """
         )
     }
