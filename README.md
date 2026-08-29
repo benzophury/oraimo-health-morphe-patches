@@ -21,7 +21,7 @@ Direct Link: `https://morphe.software/add-source?github=benzophury/oraimo-health
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.0.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+> **[v1.1.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.1.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
 <details open>
 <summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
 <br>
@@ -34,8 +34,8 @@ Direct Link: `https://morphe.software/add-source?github=benzophury/oraimo-health
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Disable Cloud Ads & External Queries](#disable-cloud-ads-external-queries) | Stubs remote launch advertising, AI config queries, and Strava cloud synchronization while keeping local DIY watchface intact. |  |
-| [Force Local Offline Mode](#force-local-offline-mode) | Bypasses cloud authentication and routes startup directly to the main view in local offline mode. |  |
-| [Neutralize Cloud Telemetry & Uploads](#neutralize-cloud-telemetry-uploads) | Stubs out background data upload service and forces network utility to offline state to prevent cloud metric collection. |  |
+| [Force Local Offline Mode](#force-local-offline-mode) | Initialises an offline guest profile, registers the user ID, and creates local SQLite tables before routing to the main view. |  |
+| [Neutralize Cloud Telemetry & Uploads](#neutralize-cloud-telemetry-uploads) | Stubs out background data upload service to prevent cloud metric collection. |  |
 | [Remove Store Tab](#remove-store-tab) | Completely removes the Store/Mall tab from the bottom navigation bar and disables store catalog requests. |  |
 
 </details>

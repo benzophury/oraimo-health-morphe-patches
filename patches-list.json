@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "patches": [
     {
       "name": "Disable Cloud Ads & External Queries",
@@ -37,7 +37,7 @@
     },
     {
       "name": "Force Local Offline Mode",
-      "description": "Bypasses cloud authentication and routes startup directly to the main view in local offline mode.",
+      "description": "Initialises an offline guest profile, registers the user ID, and creates local SQLite tables before routing to the main view.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -70,7 +70,7 @@
     },
     {
       "name": "Neutralize Cloud Telemetry & Uploads",
-      "description": "Stubs out background data upload service and forces network utility to offline state to prevent cloud metric collection.",
+      "description": "Stubs out background data upload service to prevent cloud metric collection.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
