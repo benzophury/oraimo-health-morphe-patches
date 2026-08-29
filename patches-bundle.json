@@ -1,7 +1,7 @@
 {
-  "created_at": "",
-  "description": "",
-  "download_url": "",
+  "created_at": "2026-08-29T17:54:15",
+  "description": "## 1.0.0 (2026-08-29)\n\n### ✨ New Features\n\n* initial offline and privacy patches for Oraimo Health ([2e64bd3](https://github.com/benzophury/oraimo-health-morphe-patches/commit/2e64bd3d75261c2a07ee01c0e7a7e61b562229dc))",
+  "download_url": "https://github.com/benzophury/oraimo-health-morphe-patches/releases/download/v1.0.0/patches-1.0.0.mpp",
   "signature_download_url": "",
-  "version": ""
+  "version": "1.0.0"
 }

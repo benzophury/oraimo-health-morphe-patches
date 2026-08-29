@@ -1,5 +1,138 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "0.0.0",
-  "patches": []
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Disable Cloud Ads & External Queries",
+      "description": "Stubs remote launch advertising, AI config queries, and Strava cloud synchronization while keeping local DIY watchface intact.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Force Local Offline Mode",
+      "description": "Bypasses cloud authentication and routes startup directly to the main view in local offline mode.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Neutralize Cloud Telemetry & Uploads",
+      "description": "Stubs out background data upload service and forces network utility to offline state to prevent cloud metric collection.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Store Tab",
+      "description": "Completely removes the Store/Mall tab from the bottom navigation bar and disables store catalog requests.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }
