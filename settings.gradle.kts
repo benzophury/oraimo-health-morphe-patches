@@ -1,4 +1,4 @@
-rootProject.name = "morphe-patches-template"
+rootProject.name = "oraimo-health-morphe-patches"
 
 pluginManagement {
     repositories {

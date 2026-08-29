@@ -1,14 +1,13 @@
-group = "app.template"
+group = "app.morphe.patches.oraimohealth"
 
 patches {
-    // TODO: Update this section with your project details.
     about {
-        name = "UserXYZ Patches"
-        description = "Patches for apps I like"
-        source = "git@github.com:UserXYZ/morphe-patches.git"
-        author = "Awesome dev"
+        name = "Oraimo Health Offline Patches"
+        description = "Offline sanitization and privacy patches for Oraimo Health app"
+        source = "https://github.com/benzophury/oraimo-health-morphe-patches.git"
+        author = "benzophury"
         contact = "na"
-        website = "na"
+        website = "https://github.com/benzophury/oraimo-health-morphe-patches"
         license = "GPLv3"
     }
 }

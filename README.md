@@ -1,16 +1,22 @@
-# 👋🧩 Morphe Patches template
+# Oraimo Health Offline Morphe Patches
 
-Template repository for Morphe Patches.
+Privacy-preserving offline patches for the Oraimo Health companion Android app (`com.transsion.oraimohealth`).
 
-## ❓ About
+## About
 
-Patches for apps I like.
+This patch bundle converts the Oraimo Health app into a 100% local, offline utility:
+- **Forced Local Offline Mode**: Bypasses cloud authentication and routes startup directly to the main interface without requiring Transsion SSO accounts.
+- **Neutralize Cloud Telemetry & Uploads**: Stubs out `DataUploadService` and marks the internal network utility offline to prevent cloud metric collection.
+- **Preserve Watch Remote Functions**: Keeps all notification forwarding, Bluetooth calling, contact syncing, and background BLE keep-alive services fully operational.
+- **Preserve Local DIY Watchfaces**: Keeps custom photo/PNG watch face generation and Bluetooth transfer fully functional without remote dependencies.
+- **Disable Cloud Ads & External Queries**: Stubs launch ads, AI conference queries, and Strava cloud synchronization.
 
-<!-- TODO: Update this about section with a brief introduction/summary about this repo and what it offers. -->
+### How to use these patches in Morphe Manager
 
-### How to use these patches
+Add this custom source in Morphe Manager (Settings > Sources):
+`benzophury/oraimo-health-morphe-patches`
 
-Click here to add these patches to Morphe: https://morphe.software/add-source?github=xyz-user/xyz-patches
+Direct Link: `https://morphe.software/add-source?github=benzophury/oraimo-health-morphe-patches`
 
 ## 🩹 Patches list
 
