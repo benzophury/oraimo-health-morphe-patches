@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.1.0...v1.1.1) (2026-08-29)
+
+### 🐛 Bug Fixes
+
+* **ci:** remove dev backmerge plugin from semantic release ([e5614d7](https://github.com/benzophury/oraimo-health-morphe-patches/commit/e5614d7dbb30d209f38b9fb7a9d755eab9a29c7f))
+
 ## [1.1.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.0.0...v1.1.0) (2026-08-29)
 
 ### 🐛 Bug Fixes
