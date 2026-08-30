@@ -4,11 +4,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.oraimohealth.shared.COMPATIBILITY_ORAIMO_HEALTH
 
-/**
- * Patch that forces local offline guest mode and ensures the SQLite device database is
- * initialised. It creates a guest UserInfo, saves it, and registers the user ID with
- * DeviceSetActions and DBDataManager so that DeviceInfoItemDao can store bind data.
- */
 @Suppress("unused")
 val forceLocalGuestModePatch = bytecodePatch(
     name = "Force Local Offline Mode",
@@ -18,7 +13,6 @@ val forceLocalGuestModePatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_ORAIMO_HEALTH)
 
     execute {
-        // Replace isLogin() to always return true – the app treats the guest as logged in.
         IsLoginFingerprint.method.addInstructions(
             0,
             """
@@ -27,7 +21,6 @@ val forceLocalGuestModePatch = bytecodePatch(
             """
         )
 
-        // Replace isInGuestMode() with a full guest initialisation and DB registration.
         IsInGuestModeFingerprint.method.addInstructions(
             0,
             """
@@ -55,7 +48,6 @@ val forceLocalGuestModePatch = bytecodePatch(
                 invoke-static {v0}, Lcom/transsion/oraimohealth/utils/SPManager;->saveUserInfo(Lcom/transsion/data/model/entity/UserInfo;)V
                 const/4 v1, 0x1
                 invoke-static {v1}, Lcom/transsion/oraimohealth/utils/SPManager;->saveAgreedPolicy(Z)V
-                // Register the generated user ID with the device manager and DB helper.
                 invoke-virtual {v0}, Lcom/transsion/data/model/entity/UserInfo;->getId()Ljava/lang/String;
                 move-result-object v1
                 invoke-static {v1}, Lcom/transsion/oraimohealth/module/actions/DeviceSetActions;->setLoginUserId(Ljava/lang/String;)V
@@ -66,7 +58,6 @@ val forceLocalGuestModePatch = bytecodePatch(
             """
         )
 
-        // The following methods can remain no‑ops – they are not required for offline mode.
         NeedSetUserInfoFingerprint.method.addInstructions(
             0,
             """
