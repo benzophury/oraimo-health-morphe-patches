@@ -23,7 +23,7 @@ This patch suite converts the Oraimo Health application into a fully isolated, o
 ## Patches List
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.2.1](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.2.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;13 patches total
+> **[v1.3.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;13 patches total
 <details open>
 <summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;13 patches</summary>
 <br>
@@ -42,7 +42,7 @@ This patch suite converts the Oraimo Health application into a fully isolated, o
 | [Disable Strava Cloud Sync](#disable-strava-cloud-sync) | Stubs out Strava token status queries to eliminate cloud sync overhead. |  |
 | [Force Local Offline Mode](#force-local-offline-mode) | Initialises an offline guest profile, registers the user ID, and creates local SQLite tables before routing to the main view. |  |
 | [Neutralize Cloud Telemetry & Uploads](#neutralize-cloud-telemetry-uploads) | Stubs out background data upload service and forces network utility to report offline state. |  |
-| [Pure Device Mode](#pure-device-mode) | Forces the Device management tab as the dedicated single view and hides all extraneous health, sport, and profile tabs. |  |
+| [Pure Device Mode](#pure-device-mode) | Forces the Device management tab as the dedicated single view, provisions local guest authentication, bypasses startup ads, and neutralizes cloud telemetry while keeping Bluetooth stack intact. |  |
 | [Remove Health Tab](#remove-health-tab) | Hides the Health metrics dashboard tab from the bottom navigation bar. |  |
 | [Remove Internet Permission](#remove-internet-permission) | Strips internet, network state, and WiFi permissions from AndroidManifest.xml to enforce complete offline confinement. |  |
 | [Remove Mine Tab](#remove-mine-tab) | Hides the User Profile and Account tab from the bottom navigation bar. |  |

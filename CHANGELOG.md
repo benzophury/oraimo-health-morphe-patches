@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.2.1...v1.3.0) (2026-08-31)
+
+### ✨ New Features
+
+* **core:** stabilize default patch group and configure minor releases ([78218aa](https://github.com/benzophury/oraimo-health-morphe-patches/commit/78218aacf336cfca8d6ef20b0c71abe2f0578183))
+* **ui:** consolidate core stability and offline hooks into unified Pure Device Mode patch ([2bf74c6](https://github.com/benzophury/oraimo-health-morphe-patches/commit/2bf74c61e054633bd17cb7ca10e9187f38771f8e))
+
 ## [1.2.1](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.2.0...v1.2.1) (2026-08-31)
 
 ### 🐛 Bug Fixes

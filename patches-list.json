@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "patches": [
     {
       "name": "Default to Device Tab",
@@ -235,7 +235,7 @@
     },
     {
       "name": "Pure Device Mode",
-      "description": "Forces the Device management tab as the dedicated single view and hides all extraneous health, sport, and profile tabs.",
+      "description": "Forces the Device management tab as the dedicated single view, provisions local guest authentication, bypasses startup ads, and neutralizes cloud telemetry while keeping Bluetooth stack intact.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -302,7 +302,7 @@
     {
       "name": "Remove Internet Permission",
       "description": "Strips internet, network state, and WiFi permissions from AndroidManifest.xml to enforce complete offline confinement.",
-      "default": true,
+      "default": false,
       "dependencies": [],
       "compatiblePackages": [
         {
