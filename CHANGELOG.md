@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.4.0...v1.5.0) (2026-08-31)
+
+### ✨ New Features
+
+* **core:** consolidate into 1 single unified Pure Device Mode patch ([ecbefa6](https://github.com/benzophury/oraimo-health-morphe-patches/commit/ecbefa6630bab71cace846ee9fa4a7071d860e1e))
+
 ## [1.4.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.3.0...v1.4.0) (2026-08-31)
 
 ### 🐛 Bug Fixes

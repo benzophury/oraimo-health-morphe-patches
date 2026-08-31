@@ -33,9 +33,9 @@ Select **Pure Device Mode** + **Remove Internet Permission**.
 ## Patches List
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;13 patches total
+> **[v1.5.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.5.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;1 patches total
 <details open>
-<summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;13 patches</summary>
+<summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -45,19 +45,7 @@ Select **Pure Device Mode** + **Remove Internet Permission**.
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Default to Device Tab](#default-to-device-tab) | Sets the Device management tab as the initial active page upon opening the application. |  |
-| [Disable AI Config Queries](#disable-ai-config-queries) | Stubs out AI conference and backend configuration queries to prevent remote telemetry checks. |  |
-| [Disable Remote Device Pictures](#disable-remote-device-pictures) | Stubs out remote device picture and thumbnail downloads on launch. |  |
-| [Disable Splash & Launch Ads](#disable-splash-launch-ads) | Stubs out launch ad requests and ad presentation callbacks to provide an instant startup experience. |  |
-| [Disable Strava Cloud Sync](#disable-strava-cloud-sync) | Stubs out Strava token status queries to eliminate cloud sync overhead. |  |
-| [Force Local Offline Mode](#force-local-offline-mode) | Initialises an offline guest profile, registers the user ID, and creates local SQLite tables before routing to the main view. |  |
-| [Neutralize Cloud Telemetry & Uploads](#neutralize-cloud-telemetry-uploads) | Stubs out background data upload service and forces network utility to report offline state. |  |
-| [Pure Device Mode](#pure-device-mode) | Forces the Device management tab as the dedicated single view, provisions local guest authentication, bypasses startup ads, and neutralizes cloud telemetry while keeping Bluetooth stack intact. |  |
-| [Remove Health Tab](#remove-health-tab) | Hides the Health metrics dashboard tab from the bottom navigation bar. |  |
-| [Remove Internet Permission](#remove-internet-permission) | Strips internet, network state, and WiFi permissions from AndroidManifest.xml to enforce complete offline confinement. |  |
-| [Remove Mine Tab](#remove-mine-tab) | Hides the User Profile and Account tab from the bottom navigation bar. |  |
-| [Remove Sport Tab](#remove-sport-tab) | Hides the GPS sports and workout tracking tab from the bottom navigation bar. |  |
-| [Remove Store Tab](#remove-store-tab) | Completely removes the Store/Mall tab from the bottom navigation bar and disables store catalog requests. |  |
+| [Pure Device Mode](#pure-device-mode) | Converts the app into a dedicated offline Device Manager: boots directly into the Device tab, bypasses startup ads, provisions guest profile and database bindings, and safely neutralizes cloud telemetry. |  |
 
 </details>
 
