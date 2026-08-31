@@ -128,3 +128,7 @@ node_modules/
 # Ignore IDEA files
 .idea/
 local.properties
+
+# Test sources are excluded from the project — the Morphe plugin does not
+# provide a test framework and the template ships no test source set.
+**/src/test/
