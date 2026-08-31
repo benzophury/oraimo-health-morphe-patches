@@ -6,7 +6,12 @@ Privacy-preserving offline patches for the Oraimo Health companion Android app (
 
 This patch suite converts the Oraimo Health application into a fully isolated, offline utility through granular, single-responsibility patches:
 
+- **Pure Device Mode**: Strips extraneous health, sport, and profile tabs to present a clean, dedicated Device management interface while preserving the Bluetooth binding stack.
+- **Default to Device Tab**: Automatically boots directly into the Device management tab on launch.
 - **Remove Store Tab**: Strips the Mall/Store tab from the bottom navigation bar and disables catalog requests.
+- **Remove Sport Tab**: Hides the GPS sports and workout tracking tab from navigation.
+- **Remove Health Tab**: Hides the health metrics dashboard tab from navigation.
+- **Remove Mine Tab**: Hides the user profile and account tab from navigation.
 - **Disable Splash & Launch Ads**: Bypasses launch ad downloads and splash countdowns for instant application startup.
 - **Remove Internet Permission**: Removes internet, WiFi, and network state permissions from `AndroidManifest.xml`.
 - **Force Local Offline Mode**: Auto-provisions guest profiles and binds local SQLite databases to bypass cloud authentication.
@@ -21,7 +26,12 @@ Target application: `com.transsion.oraimohealth` (version 2.0.4)
 
 | Patch | Category | Description |
 |---|---|---|
+| Pure Device Mode | UI | Forces the Device management tab as the dedicated single view and hides all extraneous health, sport, and profile tabs. |
+| Default to Device Tab | UI | Sets the Device management tab as the initial active page upon opening the application. |
 | Remove Store Tab | UI | Completely removes the Store/Mall tab from the bottom navigation bar and disables store catalog requests. |
+| Remove Sport Tab | UI | Hides the GPS sports and workout tracking tab from the bottom navigation bar. |
+| Remove Health Tab | UI | Hides the Health metrics dashboard tab from the bottom navigation bar. |
+| Remove Mine Tab | UI | Hides the User Profile and Account tab from the bottom navigation bar. |
 | Disable Splash & Launch Ads | Launch | Stubs out launch ad requests and ad presentation callbacks to provide an instant startup experience. |
 | Remove Internet Permission | Manifest | Strips internet, network state, and WiFi permissions from AndroidManifest.xml to enforce complete offline confinement. |
 | Force Local Offline Mode | Offline | Initialises an offline guest profile, registers the user ID, and creates local SQLite tables before routing to the main view. |
