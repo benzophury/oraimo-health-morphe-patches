@@ -100,11 +100,15 @@ val pureDeviceModePatch = bytecodePatch(
                 invoke-static {v0}, Lcom/transsion/oraimohealth/utils/SPManager;->saveUserInfo(Lcom/transsion/data/model/entity/UserInfo;)V
                 const/4 v1, 0x1
                 invoke-static {v1}, Lcom/transsion/oraimohealth/utils/SPManager;->saveAgreedPolicy(Z)V
-                invoke-virtual {v0}, Lcom/transsion/data/model/entity/UserInfo;->getId()Ljava/lang/String;
-                move-result-object v1
-                invoke-static {v1}, Lcom/transsion/oraimohealth/module/actions/DeviceSetActions;->setLoginUserId(Ljava/lang/String;)V
-                invoke-static {v1}, Lcom/transsion/oraimohealth/module/db/DBDataManager;->setUserId(Ljava/lang/String;)V
                 :cond_guest_ok
+                invoke-static {}, Lcom/transsion/oraimohealth/utils/SPManager;->getUserInfo()Lcom/transsion/data/model/entity/UserInfo;
+                move-result-object v0
+                if-eqz v0, :cond_cache_ok
+                invoke-virtual {v0}, Lcom/transsion/data/model/entity/UserInfo;->getId()Ljava/lang/String;
+                move-result-object v0
+                if-eqz v0, :cond_cache_ok
+                invoke-static {v0}, Lcom/transsion/devices/cache/DeviceCache;->saveUserId(Ljava/lang/String;)V
+                :cond_cache_ok
                 const/4 v0, 0x1
                 return v0
             """
