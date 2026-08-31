@@ -1,10 +1,76 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.7.0",
+  "version": "2.3.0",
   "patches": [
     {
-      "name": "Pure Device Mode",
-      "description": "Converts the app into a dedicated offline Device Manager: boots directly into the Device tab, bypasses startup ads, provisions guest profile and database bindings, and safely neutralizes cloud telemetry.",
+      "name": "DNS Hardcoding",
+      "description": "Hardcodes DNS lookup in OkHttp to fail locally with UnknownHostException, preventing any remote DNS or HTTP traffic.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Offline Network Mode",
+      "description": "Forces NetworkUtil.isConnected() to return false, making the app believe the phone has no internet.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide Navigation Tabs (Layout)",
+      "description": "Statically collapses Mall, Sport, and Mine tabs to 0dp in activity_main.xml, keeping Data and Device tabs.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
