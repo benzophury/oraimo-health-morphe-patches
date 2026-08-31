@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.2.0...v1.2.1) (2026-08-31)
+
+### 🐛 Bug Fixes
+
+* **launch:** correct onGetLaunchAd parameter type to RecommendEntity ([280f9d4](https://github.com/benzophury/oraimo-health-morphe-patches/commit/280f9d4e0f94d86a63c0e75553e345a5d9ca3e04))
+
 ## [1.2.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.1.1...v1.2.0) (2026-08-31)
 
 ### 🐛 Bug Fixes
