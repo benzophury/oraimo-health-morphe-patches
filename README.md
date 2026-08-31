@@ -4,53 +4,38 @@ Privacy-preserving offline patches for the Oraimo Health companion Android app (
 
 ## About
 
-This patch bundle converts the Oraimo Health app into a 100% local, offline utility:
-- **Forced Local Offline Mode**: Bypasses cloud authentication and routes startup directly to the main interface without requiring Transsion SSO accounts.
-- **Neutralize Cloud Telemetry & Uploads**: Stubs out `DataUploadService` and marks the internal network utility offline to prevent cloud metric collection.
-- **Preserve Watch Remote Functions**: Keeps all notification forwarding, Bluetooth calling, contact syncing, and background BLE keep-alive services fully operational.
-- **Preserve Local DIY Watchfaces**: Keeps custom photo/PNG watch face generation and Bluetooth transfer fully functional without remote dependencies.
-- **Disable Cloud Ads & External Queries**: Stubs launch ads, AI conference queries, and Strava cloud synchronization.
+This patch suite converts the Oraimo Health application into a fully isolated, offline utility through granular, single-responsibility patches:
 
-### How to use these patches in Morphe Manager
+- **Remove Store Tab**: Strips the Mall/Store tab from the bottom navigation bar and disables catalog requests.
+- **Disable Splash & Launch Ads**: Bypasses launch ad downloads and splash countdowns for instant application startup.
+- **Remove Internet Permission**: Removes internet, WiFi, and network state permissions from `AndroidManifest.xml`.
+- **Force Local Offline Mode**: Auto-provisions guest profiles and binds local SQLite databases to bypass cloud authentication.
+- **Neutralize Cloud Telemetry & Uploads**: Stubs out background data upload workers and forces offline network status.
+- **Disable Strava Cloud Sync**: Stubs out external Strava token status queries.
+- **Disable AI Config Queries**: Stubs out remote AI conference and backend configuration queries.
+- **Disable Remote Device Pictures**: Stubs out dynamic device picture and thumbnail queries.
 
-Add this custom source in Morphe Manager (Settings > Sources):
-`benzophury/oraimo-health-morphe-patches`
+## Patches List
 
-Direct Link: `https://morphe.software/add-source?github=benzophury/oraimo-health-morphe-patches`
+Target application: `com.transsion.oraimohealth` (version 2.0.4)
 
-## 🩹 Patches list
+| Patch | Category | Description |
+|---|---|---|
+| Remove Store Tab | UI | Completely removes the Store/Mall tab from the bottom navigation bar and disables store catalog requests. |
+| Disable Splash & Launch Ads | Launch | Stubs out launch ad requests and ad presentation callbacks to provide an instant startup experience. |
+| Remove Internet Permission | Manifest | Strips internet, network state, and WiFi permissions from AndroidManifest.xml to enforce complete offline confinement. |
+| Force Local Offline Mode | Offline | Initialises an offline guest profile, registers the user ID, and creates local SQLite tables before routing to the main view. |
+| Neutralize Cloud Telemetry & Uploads | Offline | Stubs out background data upload service and forces network utility to report offline state. |
+| Disable Strava Cloud Sync | Cloud | Stubs out Strava token status queries to eliminate cloud sync overhead. |
+| Disable AI Config Queries | Cloud | Stubs out AI conference and backend configuration queries to prevent remote telemetry checks. |
+| Disable Remote Device Pictures | Cloud | Stubs out remote device picture and thumbnail downloads on launch. |
 
-<!-- PATCHES_START EXPANDED -->
-> **[v1.1.1](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.1.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
-<details open>
-<summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 2.0.4 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Disable Cloud Ads & External Queries](#disable-cloud-ads-external-queries) | Stubs remote launch advertising, AI config queries, and Strava cloud synchronization while keeping local DIY watchface intact. |  |
-| [Force Local Offline Mode](#force-local-offline-mode) | Initialises an offline guest profile, registers the user ID, and creates local SQLite tables before routing to the main view. |  |
-| [Neutralize Cloud Telemetry & Uploads](#neutralize-cloud-telemetry-uploads) | Stubs out background data upload service to prevent cloud metric collection. |  |
-| [Remove Store Tab](#remove-store-tab) | Completely removes the Store/Mall tab from the bottom navigation bar and disables store catalog requests. |  |
-
-</details>
-
-<!-- PATCHES_END -->
-
-### 🛠️ Building locally
+## Building Locally
 
 - Run `./gradlew buildAndroid`
-- The built patches .mpp file is found in `patches/build/libs/patches-*.mpp`
-- Patch the mpp file using [Morphe-Desktop](https://github.com/MorpheApp/morphe-desktop)
-  like any other patch bundle.
+- Built patch archive is produced in `patches/build/libs/patches-*.mpp`
+- Apply the `.mpp` patch archive using Morphe-Desktop or Morphe Manager.
 
-See the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation) for more information.
+## License
 
-## 📜 License
-
-UserXYZ Patches are licensed under the [GNU General Public License v3.0](LICENSE)
+GNU General Public License v3.0

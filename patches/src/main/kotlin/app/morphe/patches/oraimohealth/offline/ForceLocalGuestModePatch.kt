@@ -4,6 +4,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.oraimohealth.shared.COMPATIBILITY_ORAIMO_HEALTH
 
+/**
+ * Patch that forces local offline guest mode, auto-provisions profile data, and initializes SQLite database bindings.
+ */
 @Suppress("unused")
 val forceLocalGuestModePatch = bytecodePatch(
     name = "Force Local Offline Mode",

@@ -1,10 +1,109 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "patches": [
     {
-      "name": "Disable Cloud Ads & External Queries",
-      "description": "Stubs remote launch advertising, AI config queries, and Strava cloud synchronization while keeping local DIY watchface intact.",
+      "name": "Disable AI Config Queries",
+      "description": "Stubs out AI conference and backend configuration queries to prevent remote telemetry checks.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Remote Device Pictures",
+      "description": "Stubs out remote device picture and thumbnail downloads on launch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Splash & Launch Ads",
+      "description": "Stubs out launch ad requests and ad presentation callbacks to provide an instant startup experience.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Strava Cloud Sync",
+      "description": "Stubs out Strava token status queries to eliminate cloud sync overhead.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -70,7 +169,40 @@
     },
     {
       "name": "Neutralize Cloud Telemetry & Uploads",
-      "description": "Stubs out background data upload service to prevent cloud metric collection.",
+      "description": "Stubs out background data upload service and forces network utility to report offline state.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.transsion.oraimohealth",
+          "name": "oraimo health",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#24C875",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Remove Internet Permission",
+      "description": "Strips internet, network state, and WiFi permissions from AndroidManifest.xml to enforce complete offline confinement.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
