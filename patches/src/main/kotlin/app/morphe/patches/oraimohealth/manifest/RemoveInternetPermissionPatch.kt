@@ -23,9 +23,9 @@ val removeInternetPermissionPatch = resourcePatch(
             "android.permission.CHANGE_WIFI_STATE"
         )
 
-        xmlEditor["AndroidManifest.xml"].use { editor ->
+        document("AndroidManifest.xml").use { document ->
             val nodesToRemove = mutableListOf<Node>()
-            val permissionNodes = editor.file.getElementsByTagName("uses-permission")
+            val permissionNodes = document.getElementsByTagName("uses-permission")
             for (i in 0 until permissionNodes.length) {
                 val node = permissionNodes.item(i)
                 val nameAttr = node.attributes?.getNamedItem("android:name")?.nodeValue
