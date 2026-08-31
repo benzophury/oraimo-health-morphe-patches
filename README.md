@@ -20,27 +20,27 @@ This patch suite converts the Oraimo Health application into a clean, dedicated,
 
 ## Patches List
 
-> **v2.4.0** • `main` • 4 patches total
+<!-- PATCHES_START EXPANDED -->
+> **[v2.4.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v2.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+<details open>
+<summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<br>
 
-### 1. DNS Hardcoding (`app.morphe.patches.oraimohealth.net.DnsHardcodingPatch`)
-* **Type**: Bytecode Patch
-* **Target**: `okhttp3.Dns$Companion$DnsSystem.lookup(String)`
-* **Description**: Hardcodes DNS lookup in OkHttp to fail locally with `UnknownHostException`, blackholing all cloud HTTP requests locally.
+**🎯 Supported versions:**
 
-### 2. Offline Network Mode (`app.morphe.patches.oraimohealth.offline.OfflineNetworkPatch`)
-* **Type**: Bytecode Patch
-* **Target**: `com.transsion.net.utils.NetworkUtil.isConnected(Context)`
-* **Description**: Forces `NetworkUtil.isConnected()` to return `false`, making the app believe the phone has no internet.
+| 2.0.4 |
+| :---: |
 
-### 3. Hide Navigation Tabs (Layout) (`app.morphe.patches.oraimohealth.ui.HideNavigationTabsLayoutPatch`)
-* **Type**: Resource Patch
-* **Target**: `res/layout/activity_main.xml`
-* **Description**: Statically collapses Mall, Sport, and Mine tabs to `0dp` in `activity_main.xml`, keeping Data and Device tabs.
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [DNS Hardcoding](#dns-hardcoding) | Hardcodes DNS lookup in OkHttp to fail locally with UnknownHostException, preventing any remote DNS or HTTP traffic. |  |
+| [Hide Navigation Tabs (Layout)](#hide-navigation-tabs-layout) | Statically collapses Mall, Sport, and Mine tabs to 0dp in activity_main.xml, keeping Data and Device tabs. |  |
+| [Manifest Debloat](#manifest-debloat) | Prunes background telemetry upload services, aggressive keepalive daemons, and cloud activities from AndroidManifest.xml. |  |
+| [Offline Network Mode](#offline-network-mode) | Forces NetworkUtil.isConnected() to return false, making the app believe the phone has no internet. |  |
 
-### 4. Manifest Debloat (`app.morphe.patches.oraimohealth.manifest.ManifestDebloatPatch`)
-* **Type**: Resource Patch
-* **Target**: `AndroidManifest.xml`
-* **Description**: Prunes background telemetry upload services, aggressive keepalive daemons, and cloud activities from `AndroidManifest.xml`.
+</details>
+
+<!-- PATCHES_END -->
 
 ---
 
@@ -65,7 +65,7 @@ This patch suite converts the Oraimo Health application into a clean, dedicated,
 ```bash
 java -jar morphe-desktop.jar patch \
   --striplibs=arm64-v8a \
-  --patches=patches-2.4.0.mpp \
+  --patches=patches-*.mpp \
   --out=oraimo_Health_patched.apk \
   oraimo_Health.apk
 ```
