@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.3.0...v1.4.0) (2026-08-31)
+
+### 🐛 Bug Fixes
+
+* **offline:** correct DataUploadService.enqueueWork fingerprints and stubs ([ad9186e](https://github.com/benzophury/oraimo-health-morphe-patches/commit/ad9186e3d383de76d2b0f3b3c61e821cf6c09c6d))
+
 ## [1.3.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.2.1...v1.3.0) (2026-08-31)
 
 ### ✨ New Features

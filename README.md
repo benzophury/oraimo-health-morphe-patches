@@ -33,7 +33,7 @@ Select **Pure Device Mode** + **Remove Internet Permission**.
 ## Patches List
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.3.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.3.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;13 patches total
+> **[v1.4.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;13 patches total
 <details open>
 <summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;13 patches</summary>
 <br>
