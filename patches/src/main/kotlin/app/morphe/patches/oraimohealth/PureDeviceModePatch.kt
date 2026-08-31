@@ -1,31 +1,17 @@
-package app.morphe.patches.oraimohealth.ui
+package app.morphe.patches.oraimohealth
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.oraimohealth.cloud.QueryAIConferenceConfigFingerprint
-import app.morphe.patches.oraimohealth.cloud.QueryStravaTokenStatusFingerprint
-import app.morphe.patches.oraimohealth.cloud.RequestDevicePicturesFingerprint
-import app.morphe.patches.oraimohealth.launch.OnGetLaunchAdFingerprint
-import app.morphe.patches.oraimohealth.launch.RequestLaunchAdFingerprint
-import app.morphe.patches.oraimohealth.offline.DataUploadEnqueueWorkContextFingerprint
-import app.morphe.patches.oraimohealth.offline.DataUploadEnqueueWorkFingerprint
-import app.morphe.patches.oraimohealth.offline.DataUploadOnHandleWorkFingerprint
-import app.morphe.patches.oraimohealth.offline.IsInGuestModeFingerprint
-import app.morphe.patches.oraimohealth.offline.IsLoginFingerprint
-import app.morphe.patches.oraimohealth.offline.NeedSetGoalFingerprint
-import app.morphe.patches.oraimohealth.offline.NeedSetUserInfoFingerprint
-import app.morphe.patches.oraimohealth.offline.NetworkUtilIsConnectedFingerprint
-import app.morphe.patches.oraimohealth.offline.RefreshTokenFingerprint
 import app.morphe.patches.oraimohealth.shared.COMPATIBILITY_ORAIMO_HEALTH
 
 /**
- * Core unified patch that transforms the app into a stable, offline-first Device Manager.
- * Handles navigation layout, offline guest provisioning, ad bypass, and cloud telemetry neutralization.
+ * Unified core patch that transforms the application into an offline, dedicated Device Manager.
+ * Preserves the full Bluetooth Low Energy peripheral connection, pairing, and synchronization stack.
  */
 @Suppress("unused")
 val pureDeviceModePatch = bytecodePatch(
     name = "Pure Device Mode",
-    description = "Forces the Device management tab as the dedicated single view, provisions local guest authentication, bypasses startup ads, and neutralizes cloud telemetry while keeping Bluetooth stack intact.",
+    description = "Converts the app into a dedicated offline Device Manager: boots directly into the Device tab, bypasses startup ads, provisions guest profile and database bindings, and safely neutralizes cloud telemetry.",
     default = true
 ) {
     compatibleWith(COMPATIBILITY_ORAIMO_HEALTH)
@@ -38,21 +24,27 @@ val pureDeviceModePatch = bytecodePatch(
                 iget-object v0, p0, Lcom/transsion/oraimohealth/module/main/MainActivity;->mBinding:Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;
                 if-eqz v0, :cond_no_binding
                 const/16 v1, 0x8
-                iget-object v2, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbData:Landroid/widget/RadioButton;
-                if-eqz v2, :cond_skip_data
-                invoke-virtual {v2, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
+                iget-object v0, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbData:Landroid/widget/RadioButton;
+                if-eqz v0, :cond_skip_data
+                invoke-virtual {v0, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
                 :cond_skip_data
-                iget-object v2, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbSport:Landroid/widget/RadioButton;
-                if-eqz v2, :cond_skip_sport
-                invoke-virtual {v2, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
+                iget-object v0, p0, Lcom/transsion/oraimohealth/module/main/MainActivity;->mBinding:Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;
+                if-eqz v0, :cond_no_binding
+                iget-object v0, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbSport:Landroid/widget/RadioButton;
+                if-eqz v0, :cond_skip_sport
+                invoke-virtual {v0, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
                 :cond_skip_sport
-                iget-object v2, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbMall:Landroid/widget/RadioButton;
-                if-eqz v2, :cond_skip_mall
-                invoke-virtual {v2, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
+                iget-object v0, p0, Lcom/transsion/oraimohealth/module/main/MainActivity;->mBinding:Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;
+                if-eqz v0, :cond_no_binding
+                iget-object v0, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbMall:Landroid/widget/RadioButton;
+                if-eqz v0, :cond_skip_mall
+                invoke-virtual {v0, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
                 :cond_skip_mall
-                iget-object v2, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbMine:Landroid/widget/RadioButton;
-                if-eqz v2, :cond_skip_mine
-                invoke-virtual {v2, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
+                iget-object v0, p0, Lcom/transsion/oraimohealth/module/main/MainActivity;->mBinding:Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;
+                if-eqz v0, :cond_no_binding
+                iget-object v0, v0, Lcom/transsion/oraimohealth/databinding/ActivityMainBinding;->rbMine:Landroid/widget/RadioButton;
+                if-eqz v0, :cond_skip_mine
+                invoke-virtual {v0, v1}, Landroid/widget/RadioButton;->setVisibility(I)V
                 :cond_skip_mine
                 :cond_no_binding
             """
