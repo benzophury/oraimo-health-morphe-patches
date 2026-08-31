@@ -18,5 +18,5 @@ object OnGetLaunchAdFingerprint : Fingerprint(
     definingClass = "Lcom/transsion/oraimohealth/module/launch/LaunchActivity;",
     name = "onGetLaunchAd",
     returnType = "V",
-    parameters = listOf("Lcom/transsion/data/model/entity/AdInfo;")
+    parameters = listOf("Lcom/transsion/data/model/entity/RecommendEntity;")
 )
