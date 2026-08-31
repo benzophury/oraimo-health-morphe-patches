@@ -2,20 +2,35 @@ package app.morphe.patches.oraimohealth.ui
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.oraimohealth.cloud.QueryAIConferenceConfigFingerprint
+import app.morphe.patches.oraimohealth.cloud.QueryStravaTokenStatusFingerprint
+import app.morphe.patches.oraimohealth.cloud.RequestDevicePicturesFingerprint
+import app.morphe.patches.oraimohealth.launch.OnGetLaunchAdFingerprint
+import app.morphe.patches.oraimohealth.launch.RequestLaunchAdFingerprint
+import app.morphe.patches.oraimohealth.offline.DataUploadEnqueueWorkFingerprint
+import app.morphe.patches.oraimohealth.offline.DataUploadOnHandleWorkFingerprint
+import app.morphe.patches.oraimohealth.offline.IsInGuestModeFingerprint
+import app.morphe.patches.oraimohealth.offline.IsLoginFingerprint
+import app.morphe.patches.oraimohealth.offline.NeedSetGoalFingerprint
+import app.morphe.patches.oraimohealth.offline.NeedSetUserInfoFingerprint
+import app.morphe.patches.oraimohealth.offline.NetworkUtilIsConnectedFingerprint
+import app.morphe.patches.oraimohealth.offline.RefreshTokenFingerprint
 import app.morphe.patches.oraimohealth.shared.COMPATIBILITY_ORAIMO_HEALTH
 
 /**
- * Patch that isolates the application interface exclusively to the Device management tab while preserving Bluetooth binding stack.
+ * Core unified patch that transforms the app into a stable, offline-first Device Manager.
+ * Handles navigation layout, offline guest provisioning, ad bypass, and cloud telemetry neutralization.
  */
 @Suppress("unused")
 val pureDeviceModePatch = bytecodePatch(
     name = "Pure Device Mode",
-    description = "Forces the Device management tab as the dedicated single view and hides all extraneous health, sport, and profile tabs.",
+    description = "Forces the Device management tab as the dedicated single view, provisions local guest authentication, bypasses startup ads, and neutralizes cloud telemetry while keeping Bluetooth stack intact.",
     default = true
 ) {
     compatibleWith(COMPATIBILITY_ORAIMO_HEALTH)
 
     execute {
+        // 1. Navigation: Hide extraneous tabs in MainActivity
         MainActivityInitViewsFingerprint.method.addInstructions(
             0,
             """
@@ -42,6 +57,7 @@ val pureDeviceModePatch = bytecodePatch(
             """
         )
 
+        // 2. Navigation: Default directly to Device Tab in MainActivity
         MainActivityInitEventFingerprint.method.addInstructions(
             0,
             """
@@ -52,6 +68,150 @@ val pureDeviceModePatch = bytecodePatch(
                 const/4 v1, 0x1
                 invoke-virtual {v0, v1}, Landroid/widget/RadioButton;->setChecked(Z)V
                 :cond_no_init_device
+            """
+        )
+
+        // 3. Offline Core: Force local guest authentication and initialize SQLite database bindings
+        IsLoginFingerprint.method.addInstructions(
+            0,
+            """
+                const/4 v0, 0x1
+                return v0
+            """
+        )
+
+        IsInGuestModeFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static {}, Lcom/transsion/oraimohealth/utils/SPManager;->getUserInfo()Lcom/transsion/data/model/entity/UserInfo;
+                move-result-object v0
+                if-nez v0, :cond_guest_ok
+                new-instance v0, Lcom/transsion/oraimohealth/module/account/presenter/BaseAccountPresenter;
+                invoke-direct {v0}, Lcom/transsion/oraimohealth/module/account/presenter/BaseAccountPresenter;-><init>()V
+                invoke-virtual {v0}, Lcom/transsion/oraimohealth/module/account/presenter/BaseAccountPresenter;->createGuestUserInfo()Lcom/transsion/data/model/entity/UserInfo;
+                move-result-object v0
+                const/4 v1, 0x1
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setGender(I)V
+                const-string v1, "2000-01-01"
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setBirthday(Ljava/lang/String;)V
+                const/16 v1, 0xaf
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setHeight(I)V
+                const/16 v1, 0x46
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setWeight(I)V
+                const/16 v1, 0x1f40
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setTargetSteps(I)V
+                const/16 v1, 0x1f4
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setTargetCalories(I)V
+                const/16 v1, 0x1e
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setTargetSportDuration(I)V
+                invoke-static {v0}, Lcom/transsion/oraimohealth/utils/SPManager;->saveUserInfo(Lcom/transsion/data/model/entity/UserInfo;)V
+                const/4 v1, 0x1
+                invoke-static {v1}, Lcom/transsion/oraimohealth/utils/SPManager;->saveAgreedPolicy(Z)V
+                invoke-virtual {v0}, Lcom/transsion/data/model/entity/UserInfo;->getId()Ljava/lang/String;
+                move-result-object v1
+                invoke-static {v1}, Lcom/transsion/oraimohealth/module/actions/DeviceSetActions;->setLoginUserId(Ljava/lang/String;)V
+                invoke-static {v1}, Lcom/transsion/oraimohealth/module/db/DBDataManager;->setUserId(Ljava/lang/String;)V
+                :cond_guest_ok
+                const/4 v0, 0x1
+                return v0
+            """
+        )
+
+        NeedSetUserInfoFingerprint.method.addInstructions(
+            0,
+            """
+                const/4 v0, 0x0
+                return v0
+            """
+        )
+
+        NeedSetGoalFingerprint.method.addInstructions(
+            0,
+            """
+                const/4 v0, 0x0
+                return v0
+            """
+        )
+
+        RefreshTokenFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        // 4. Launch & Ads: Neutralize startup ads and cloud query delays
+        RequestLaunchAdFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        OnGetLaunchAdFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        QueryAIConferenceConfigFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        QueryStravaTokenStatusFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        RequestDevicePicturesFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        // 5. Cloud Telemetry & Uploads: Neutralize background services and force offline network utility
+        DataUploadOnHandleWorkFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        DataUploadEnqueueWorkFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        NetworkUtilIsConnectedFingerprint.method.addInstructions(
+            0,
+            """
+                const/4 v0, 0x0
+                return v0
+            """
+        )
+
+        // 6. Store: Disable mall display
+        IsShowMallFingerprint.method.addInstructions(
+            0,
+            """
+                const/4 v0, 0x0
+                return v0
+            """
+        )
+
+        RequestMallInfoListFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
             """
         )
     }
