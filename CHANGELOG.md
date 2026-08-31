@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.5.0...v1.6.0) (2026-08-31)
+
+### 🐛 Bug Fixes
+
+* **ble:** populate DeviceCache.saveUserId for Bluetooth authentication handshake ([685cafb](https://github.com/benzophury/oraimo-health-morphe-patches/commit/685cafb640ab25fbb552269c21bad003c61a440a))
+
 ## [1.5.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.4.0...v1.5.0) (2026-08-31)
 
 ### ✨ New Features
