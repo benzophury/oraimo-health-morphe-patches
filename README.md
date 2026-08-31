@@ -21,9 +21,9 @@ This patch suite converts the Oraimo Health application into a clean, dedicated,
 ## Patches List
 
 <!-- PATCHES_START EXPANDED -->
-> **[v2.4.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v2.4.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;4 patches total
+> **[v1.8.0](https://github.com/benzophury/oraimo-health-morphe-patches/releases/tag/v1.8.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;5 patches total
 <details open>
-<summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
+<summary>📦 oraimo health&nbsp;&nbsp;•&nbsp;&nbsp;5 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -33,6 +33,7 @@ This patch suite converts the Oraimo Health application into a clean, dedicated,
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
+| [Air-Gap Manifest](#air-gap-manifest) | Strips INTERNET, ACCESS_NETWORK_STATE, and Wi-Fi permissions from AndroidManifest.xml for sandbox isolation. |  |
 | [DNS Hardcoding](#dns-hardcoding) | Hardcodes DNS lookup in OkHttp to fail locally with UnknownHostException, preventing any remote DNS or HTTP traffic. |  |
 | [Hide Navigation Tabs (Layout)](#hide-navigation-tabs-layout) | Statically collapses Mall, Sport, and Mine tabs to 0dp in activity_main.xml, keeping Data and Device tabs. |  |
 | [Manifest Debloat](#manifest-debloat) | Prunes background telemetry upload services, aggressive keepalive daemons, and cloud activities from AndroidManifest.xml. |  |

@@ -1,3 +1,14 @@
+## [1.8.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.7.0...v1.8.0) (2026-08-31)
+
+### 🐛 Bug Fixes
+
+* **ci:** add CI markers to README for automated Morphe release generation ([67439af](https://github.com/benzophury/oraimo-health-morphe-patches/commit/67439afb1bc2d2be8c58df9595ec456616efce2e))
+
+### ✨ New Features
+
+* **core:** introduce modular v2.3 patches with DNS hardcoding, offline network mode, and layout pruning ([5473a7c](https://github.com/benzophury/oraimo-health-morphe-patches/commit/5473a7c3668d355885b3a5e2b314315455ad8159))
+* **debloat:** add manifest debloat patch to prune telemetry services and cloud activities ([87628fb](https://github.com/benzophury/oraimo-health-morphe-patches/commit/87628fb73a93b540e1ebc66626687c64151b57a6))
+
 ## [1.7.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.6.0...v1.7.0) (2026-08-31)
 
 ### 🐛 Bug Fixes
