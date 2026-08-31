@@ -22,7 +22,7 @@ This patch suite converts the Oraimo Health application into a fully isolated, o
 
 ## Patches List
 
-<!-- PATCHES_START [EXPANDED] -->
+<!-- PATCHES_START EXPANDED -->
 <!-- PATCHES_END -->
 
 ## Building Locally
