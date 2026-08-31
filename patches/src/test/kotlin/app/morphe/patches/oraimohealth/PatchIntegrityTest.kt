@@ -8,6 +8,11 @@ import app.morphe.patches.oraimohealth.manifest.removeInternetPermissionPatch
 import app.morphe.patches.oraimohealth.offline.forceLocalGuestModePatch
 import app.morphe.patches.oraimohealth.offline.neutralizeCloudUploadPatch
 import app.morphe.patches.oraimohealth.shared.COMPATIBILITY_ORAIMO_HEALTH
+import app.morphe.patches.oraimohealth.ui.defaultDeviceTabPatch
+import app.morphe.patches.oraimohealth.ui.pureDeviceModePatch
+import app.morphe.patches.oraimohealth.ui.removeHealthTabPatch
+import app.morphe.patches.oraimohealth.ui.removeMineTabPatch
+import app.morphe.patches.oraimohealth.ui.removeSportTabPatch
 import app.morphe.patches.oraimohealth.ui.removeStoreTabPatch
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -26,6 +31,11 @@ class PatchIntegrityTest {
     fun testPatchMetadataIntegrity() {
         val allPatches = listOf(
             removeStoreTabPatch,
+            removeSportTabPatch,
+            removeHealthTabPatch,
+            removeMineTabPatch,
+            defaultDeviceTabPatch,
+            pureDeviceModePatch,
             disableSplashPatch,
             removeInternetPermissionPatch,
             forceLocalGuestModePatch,
