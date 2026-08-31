@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.6.0...v1.7.0) (2026-08-31)
+
+### 🐛 Bug Fixes
+
+* **ble:** enforce 32-character MD5 user ID token for MoYoung CRPBle SDK handshake ([9486d31](https://github.com/benzophury/oraimo-health-morphe-patches/commit/9486d311878e292e930fcca99c369f995b9a171b))
+
 ## [1.6.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.5.0...v1.6.0) (2026-08-31)
 
 ### 🐛 Bug Fixes
