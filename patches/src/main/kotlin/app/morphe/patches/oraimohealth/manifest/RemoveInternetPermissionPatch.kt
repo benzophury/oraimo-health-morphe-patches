@@ -11,7 +11,7 @@ import org.w3c.dom.Node
 val removeInternetPermissionPatch = resourcePatch(
     name = "Remove Internet Permission",
     description = "Strips internet, network state, and WiFi permissions from AndroidManifest.xml to enforce complete offline confinement.",
-    default = true
+    default = false
 ) {
     compatibleWith(COMPATIBILITY_ORAIMO_HEALTH)
 
