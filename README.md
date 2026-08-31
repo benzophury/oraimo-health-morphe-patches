@@ -4,21 +4,31 @@ Privacy-preserving offline patches for the Oraimo Health companion Android app (
 
 ## About
 
-This patch suite converts the Oraimo Health application into a fully isolated, offline utility through granular, single-responsibility patches:
+This patch suite converts the Oraimo Health application into a clean, dedicated, offline Device Manager while strictly preserving the entire Bluetooth Low Energy (BLE) peripheral binding and synchronization stack.
 
-- **Pure Device Mode**: Strips extraneous health, sport, and profile tabs to present a clean, dedicated Device management interface while preserving the Bluetooth binding stack.
-- **Default to Device Tab**: Automatically boots directly into the Device management tab on launch.
-- **Remove Store Tab**: Strips the Mall/Store tab from the bottom navigation bar and disables catalog requests.
-- **Remove Sport Tab**: Hides the GPS sports and workout tracking tab from navigation.
-- **Remove Health Tab**: Hides the health metrics dashboard tab from navigation.
-- **Remove Mine Tab**: Hides the user profile and account tab from navigation.
-- **Disable Splash & Launch Ads**: Bypasses launch ad downloads and splash countdowns for instant application startup.
-- **Remove Internet Permission**: Removes internet, WiFi, and network state permissions from `AndroidManifest.xml`.
-- **Force Local Offline Mode**: Auto-provisions guest profiles and binds local SQLite databases to bypass cloud authentication.
-- **Neutralize Cloud Telemetry & Uploads**: Stubs out background data upload workers and forces offline network status.
-- **Disable Strava Cloud Sync**: Stubs out external Strava token status queries.
-- **Disable AI Config Queries**: Stubs out remote AI conference and backend configuration queries.
-- **Disable Remote Device Pictures**: Stubs out dynamic device picture and thumbnail queries.
+### Key Highlights
+
+- **Pure Device Mode (Unified Core)**: All-in-one patch that streamlines the app directly into a dedicated single-tab Device interface, skips startup ad delays, auto-provisions local guest profiles and SQLite tables, and safely neutralizes cloud telemetry.
+- **Bluetooth Stack Preservation**: Full BLE GATT connectivity, device pairing handshake (`MoyConnectBindManagement`), notification filtering, alarm management, and local DIY watchface streaming operate with 100% stability.
+- **Granular Navigation Options**: Individual toggles for hiding or showing specific tabs (Sports, Health, Mall, Mine) according to user preference.
+- **Air-Gapped Isolation Support**: Optional manifest-level permission stripping for complete sandbox containment when paired with the offline stubs.
+
+---
+
+## Recommended Patch Profiles
+
+### 1. Minimal / Standard Profile (Recommended)
+Select **Pure Device Mode** (default enabled).
+- Directly boots into the Device management interface.
+- Bypasses launch ads and cloud login requirements.
+- Keeps Android OS permissions intact to eliminate any risk of system security exceptions.
+
+### 2. Air-Gapped Sandbox Profile
+Select **Pure Device Mode** + **Remove Internet Permission**.
+- Revokes `INTERNET`, `ACCESS_NETWORK_STATE`, and `ACCESS_WIFI_STATE` at the OS level for complete network isolation.
+- Fully protected by the offline stubs to ensure stable execution.
+
+---
 
 ## Patches List
 
@@ -53,11 +63,15 @@ This patch suite converts the Oraimo Health application into a fully isolated, o
 
 <!-- PATCHES_END -->
 
+---
+
 ## Building Locally
 
-- Run `./gradlew buildAndroid`
+- Run `./gradlew :patches:buildAndroid`
 - Built patch archive is produced in `patches/build/libs/patches-*.mpp`
-- Apply the `.mpp` patch archive using Morphe-Desktop or Morphe Manager.
+- Apply the `.mpp` patch archive using Morphe-Desktop, Morphe CLI, or Morphe Manager.
+
+---
 
 ## License
 
