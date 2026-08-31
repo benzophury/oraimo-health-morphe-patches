@@ -7,6 +7,7 @@ import app.morphe.patches.oraimohealth.cloud.QueryStravaTokenStatusFingerprint
 import app.morphe.patches.oraimohealth.cloud.RequestDevicePicturesFingerprint
 import app.morphe.patches.oraimohealth.launch.OnGetLaunchAdFingerprint
 import app.morphe.patches.oraimohealth.launch.RequestLaunchAdFingerprint
+import app.morphe.patches.oraimohealth.offline.DataUploadEnqueueWorkContextFingerprint
 import app.morphe.patches.oraimohealth.offline.DataUploadEnqueueWorkFingerprint
 import app.morphe.patches.oraimohealth.offline.DataUploadOnHandleWorkFingerprint
 import app.morphe.patches.oraimohealth.offline.IsInGuestModeFingerprint
@@ -185,6 +186,13 @@ val pureDeviceModePatch = bytecodePatch(
         )
 
         DataUploadEnqueueWorkFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
+        DataUploadEnqueueWorkContextFingerprint.method.addInstructions(
             0,
             """
                 return-void

@@ -13,13 +13,23 @@ object DataUploadOnHandleWorkFingerprint : Fingerprint(
 )
 
 /**
- * Fingerprint matching the `enqueueWork` method in DataUploadService.
+ * Fingerprint matching the `enqueueWork(Context, Intent)` method in DataUploadService.
  */
 object DataUploadEnqueueWorkFingerprint : Fingerprint(
     definingClass = "Lcom/transsion/oraimohealth/service/DataUploadService;",
     name = "enqueueWork",
     returnType = "V",
-    parameters = listOf("Landroid/content/Context;", "Ljava/lang/Class;", "I", "Landroid/content/Intent;")
+    parameters = listOf("Landroid/content/Context;", "Landroid/content/Intent;")
+)
+
+/**
+ * Fingerprint matching the `enqueueWork(Context)` method in DataUploadService.
+ */
+object DataUploadEnqueueWorkContextFingerprint : Fingerprint(
+    definingClass = "Lcom/transsion/oraimohealth/service/DataUploadService;",
+    name = "enqueueWork",
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;")
 )
 
 /**

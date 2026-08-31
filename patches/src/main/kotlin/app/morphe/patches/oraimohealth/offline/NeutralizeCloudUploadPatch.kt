@@ -30,6 +30,13 @@ val neutralizeCloudUploadPatch = bytecodePatch(
             """
         )
 
+        DataUploadEnqueueWorkContextFingerprint.method.addInstructions(
+            0,
+            """
+                return-void
+            """
+        )
+
         NetworkUtilIsConnectedFingerprint.method.addInstructions(
             0,
             """
