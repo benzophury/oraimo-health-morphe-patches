@@ -83,6 +83,8 @@ val pureDeviceModePatch = bytecodePatch(
                 invoke-direct {v0}, Lcom/transsion/oraimohealth/module/account/presenter/BaseAccountPresenter;-><init>()V
                 invoke-virtual {v0}, Lcom/transsion/oraimohealth/module/account/presenter/BaseAccountPresenter;->createGuestUserInfo()Lcom/transsion/data/model/entity/UserInfo;
                 move-result-object v0
+                const-string v1, "0123456789abcdef0123456789abcdef"
+                invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setId(Ljava/lang/String;)V
                 const/4 v1, 0x1
                 invoke-virtual {v0, v1}, Lcom/transsion/data/model/entity/UserInfo;->setGender(I)V
                 const-string v1, "2000-01-01"
@@ -101,14 +103,8 @@ val pureDeviceModePatch = bytecodePatch(
                 const/4 v1, 0x1
                 invoke-static {v1}, Lcom/transsion/oraimohealth/utils/SPManager;->saveAgreedPolicy(Z)V
                 :cond_guest_ok
-                invoke-static {}, Lcom/transsion/oraimohealth/utils/SPManager;->getUserInfo()Lcom/transsion/data/model/entity/UserInfo;
-                move-result-object v0
-                if-eqz v0, :cond_cache_ok
-                invoke-virtual {v0}, Lcom/transsion/data/model/entity/UserInfo;->getId()Ljava/lang/String;
-                move-result-object v0
-                if-eqz v0, :cond_cache_ok
+                const-string v0, "0123456789abcdef0123456789abcdef"
                 invoke-static {v0}, Lcom/transsion/devices/cache/DeviceCache;->saveUserId(Ljava/lang/String;)V
-                :cond_cache_ok
                 const/4 v0, 0x1
                 return v0
             """
