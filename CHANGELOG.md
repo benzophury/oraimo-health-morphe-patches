@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.8.0...v1.9.0) (2026-09-01)
+
+### 🐛 Bug Fixes
+
+* **manifest:** remove AirGapManifestPatch to prevent SecurityException crashes ([e1d104a](https://github.com/benzophury/oraimo-health-morphe-patches/commit/e1d104ab957289b2df459aac2e1d07ba8dc76587))
+
 ## [1.8.0](https://github.com/benzophury/oraimo-health-morphe-patches/compare/v1.7.0...v1.8.0) (2026-08-31)
 
 ### 🐛 Bug Fixes
