@@ -24,6 +24,13 @@
               "description": null
             },
             {
+              "version": "2.0.6",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": null,
               "versionCodes": null,
               "isExperimental": true,
@@ -51,6 +58,13 @@
           "targets": [
             {
               "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.0.6",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -90,6 +104,13 @@
               "description": null
             },
             {
+              "version": "2.0.6",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
               "version": null,
               "versionCodes": null,
               "isExperimental": true,
@@ -117,6 +138,13 @@
           "targets": [
             {
               "version": "2.0.4",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2.0.6",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
