@@ -1,10 +1,10 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "patches": [
     {
-      "name": "Offline Network Mode",
-      "description": "Forces network utilities to report disconnected and disables network change listeners.",
+      "name": "DNS Hardcoding",
+      "description": "Hardcodes DNS lookup in OkHttp to fail locally with UnknownHostException, preventing any remote DNS or HTTP traffic.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -55,8 +55,8 @@
       "options": []
     },
     {
-      "name": "DNS Hardcoding",
-      "description": "Hardcodes DNS lookup in OkHttp to fail locally with UnknownHostException, preventing any remote DNS or HTTP traffic.",
+      "name": "Manifest Debloat",
+      "description": "Prunes background telemetry upload services, aggressive keepalive daemons, and cloud activities from AndroidManifest.xml.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -81,8 +81,8 @@
       "options": []
     },
     {
-      "name": "Manifest Debloat",
-      "description": "Prunes background telemetry upload services, aggressive keepalive daemons, and cloud activities from AndroidManifest.xml.",
+      "name": "Offline Network Mode",
+      "description": "Forces network utilities to report disconnected and disables network change listeners.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
